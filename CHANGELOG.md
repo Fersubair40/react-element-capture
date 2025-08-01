@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/Fersubair40/react-element-capture/compare/v1.0.3...v1.0.4) (2025-08-01)
+
+
+### Bug Fixes
+
+* restore index.ts to export PNGDownloadLink from PngDownloadLink.js ([6470453](https://github.com/Fersubair40/react-element-capture/commit/6470453d68df43cd6d91b4c4029875e7c216b80d))
+
 ## [1.0.3](https://github.com/Fersubair40/react-element-capture/compare/v1.0.2...v1.0.3) (2025-08-01)
 
 
