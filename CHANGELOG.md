@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/Fersubair40/png-download-link/compare/v1.0.1...v1.0.2) (2025-08-01)
+
+
+### Bug Fixes
+
+* set package.json to private false ([ada3d2d](https://github.com/Fersubair40/png-download-link/commit/ada3d2df09e75e916c1a2ce10bd05803c4689944))
+
 ## [1.0.1](https://github.com/Fersubair40/png-download-link/compare/v1.0.0...v1.0.1) (2025-08-01)
 
 
