@@ -4,6 +4,9 @@
 	"private": false,
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
+	"publishConfig": {
+		"access": "public"
+	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Fersubair40/png-download-link.git"
@@ -11,7 +14,7 @@
 	"homepage": "https://github.com/Fersubair40/png-download-link.git#readme",
 	"scripts": {
 		"build": "tsc && cp -rf README.md dist && cp -rf package.json dist",
-			"test": "jest",
+		"test": "jest",
 		"test:watch": "jest --watch",
 		"test:coverage": "jest --coverage"
 	},
