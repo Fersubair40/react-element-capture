@@ -1,3 +1,11 @@
+## [1.0.1](https://github.com/Fersubair40/png-download-link/compare/v1.0.0...v1.0.1) (2025-08-01)
+
+
+### Bug Fixes
+
+* update jest.config.js to use ES module syntax ([b28da35](https://github.com/Fersubair40/png-download-link/commit/b28da35934276edfb4624a04089d401c62e69211))
+* update README and package.json for new package name and module type ([abab791](https://github.com/Fersubair40/png-download-link/commit/abab791f48647dae3ff05ef23a7b435ad8474d64))
+
 # 1.0.0 (2025-08-01)
 
 
