@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/Fersubair40/png-download-link/compare/v1.0.2...v1.0.3) (2025-08-01)
+
+
+### Bug Fixes
+
+* update .releaserc and package.json for npm publish configuration ([20abbb0](https://github.com/Fersubair40/png-download-link/commit/20abbb0864445961f1ab784d5623769dd7c97915))
+
 ## [1.0.2](https://github.com/Fersubair40/png-download-link/compare/v1.0.1...v1.0.2) (2025-08-01)
 
 
