@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/Fersubair40/png-download-link/compare/v1.0.3...v1.0.4) (2025-08-01)
+
+
+### Bug Fixes
+
+* add publishConfig for public access in package.json ([3b8a254](https://github.com/Fersubair40/png-download-link/commit/3b8a254eeb35ee07ead0fbcd8b04ea1795380da9))
+
 ## [1.0.3](https://github.com/Fersubair40/png-download-link/compare/v1.0.2...v1.0.3) (2025-08-01)
 
 
