@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/Fersubair40/png-download-link/compare/v1.0.0...v1.0.1) (2025-08-01)
+
+
+### Bug Fixes
+
+* update package name to include scope ([5acf73b](https://github.com/Fersubair40/png-download-link/commit/5acf73bb21f576fe128353aab4f0a957f034d4be))
+
 # 1.0.0 (2025-08-01)
 
 
