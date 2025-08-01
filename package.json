@@ -1,5 +1,5 @@
 {
-	"name": "png-download-link",
+	"name": "@fersubair40/png-download-link",
 	"version": "0.0.0-semantic-release",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
