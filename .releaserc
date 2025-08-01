@@ -1,6 +1,6 @@
 {
   "branches": ["main", "master"],
-  "repositoryUrl": "https://github.com/Fersubair40/png-download-link",
+  "repositoryUrl": "https://github.com/Fersubair40/react-element-capture.git",
   "debug": "true",
   "plugins": [
     "@semantic-release/commit-analyzer",

@@ -2,8 +2,15 @@
 	"name": "@temilayodev/react-element-capture",
 	"version": "0.0.0-semantic-release",
 	"main": "dist/index.js",
+	"module": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"type": "module",
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"types": "./dist/index.d.ts"
+		}
+	},
 	"publishConfig": {
 		"access": "public"
 	},
