@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/Fersubair40/react-element-capture/compare/v1.0.2...v1.0.3) (2025-08-01)
+
+
+### Bug Fixes
+
+* update jest.config.js to CommonJS syntax and adjust tsconfig.json module type ([e5a1523](https://github.com/Fersubair40/react-element-capture/commit/e5a1523779307d726ed9782b46a9d9bcb94b384e))
+
 ## [1.0.2](https://github.com/Fersubair40/react-element-capture/compare/v1.0.1...v1.0.2) (2025-08-01)
 
 
