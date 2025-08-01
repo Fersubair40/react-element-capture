@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/Fersubair40/png-download-link/compare/v1.0.6...v1.0.7) (2025-08-01)
+
+
+### Bug Fixes
+
+* update package name to reflect new functionality ([31aa487](https://github.com/Fersubair40/png-download-link/commit/31aa4878c6f2fea3876da55d8915bfba1f9e9309))
+
 ## [1.0.6](https://github.com/Fersubair40/png-download-link/compare/v1.0.5...v1.0.6) (2025-08-01)
 
 
