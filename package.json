@@ -1,5 +1,5 @@
 {
-	"name": "@temilayodev/react-image-download",
+	"name": "@temilayodev/react-element-capture",
 	"version": "0.0.0-semantic-release",
 	"private": false,
 	"main": "dist/index.js",
