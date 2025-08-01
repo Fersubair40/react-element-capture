@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/Fersubair40/react-element-capture/compare/v1.0.4...v1.0.5) (2025-08-01)
+
+
+### Bug Fixes
+
+* add debug step to list dist contents in release workflow ([d77b2bc](https://github.com/Fersubair40/react-element-capture/commit/d77b2bc02c7dc961ea3d5f05a777799eaf7c73a0))
+
 ## [1.0.4](https://github.com/Fersubair40/react-element-capture/compare/v1.0.3...v1.0.4) (2025-08-01)
 
 
