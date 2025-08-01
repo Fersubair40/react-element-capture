@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/Fersubair40/png-download-link/compare/v1.0.5...v1.0.6) (2025-08-01)
+
+
+### Bug Fixes
+
+* update package name to match the new author namespace ([b988712](https://github.com/Fersubair40/png-download-link/commit/b9887127e395777a29fbf96f9fd038fca0b48630))
+
 ## [1.0.5](https://github.com/Fersubair40/png-download-link/compare/v1.0.4...v1.0.5) (2025-08-01)
 
 
