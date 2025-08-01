@@ -39,6 +39,9 @@ jobs:
       - name: Build
         run: yarn build
 
+      - name: Debug - List dist contents
+        run: ls -la dist/
+
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
