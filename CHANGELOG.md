@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/Fersubair40/react-element-capture/compare/v1.0.1...v1.0.2) (2025-08-01)
+
+
+### Bug Fixes
+
+* update repository URL in .releaserc and add exports field in package.json ([e9b0f0d](https://github.com/Fersubair40/react-element-capture/commit/e9b0f0da8829849a044da37576822b2798de8a0a))
+
 ## [1.0.1](https://github.com/Fersubair40/png-download-link/compare/v1.0.0...v1.0.1) (2025-08-01)
 
 
