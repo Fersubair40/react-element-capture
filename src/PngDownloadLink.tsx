@@ -2,8 +2,13 @@ import React, {useCallback, cloneElement, isValidElement} from 'react';
 import html2canvas from 'html2canvas';
 import {createRoot} from 'react-dom/client';
 
+interface Actions {
+	download: () => Promise<void>;
+	share: () => Promise<void>;
+}
+
 interface PngDownloadLinkProps {
-	children: React.ReactNode;
+	children: React.ReactNode | ((actions: Actions) => React.ReactNode);
 	document: React.ReactNode;
 	fileName?: string;
 	scale?: number;
@@ -21,8 +26,7 @@ export const PNGDownloadLink = ({
 	width,
 	height,
 }: PngDownloadLinkProps) => {
-	const downloadPNG = useCallback(async () => {
-		// Create a temporary container with explicit dimensions
+	const captureImage = useCallback(async () => {
 		const container = window.document.createElement('div');
 		container.style.position = 'absolute';
 		container.style.left = '-9999px';
@@ -68,7 +72,6 @@ export const PNGDownloadLink = ({
 				)
 			);
 
-			// Additional wait to ensure all styles are applied
 			await new Promise((resolve) => setTimeout(resolve, 200));
 
 			const canvas = await html2canvas(container, {
@@ -76,29 +79,74 @@ export const PNGDownloadLink = ({
 				backgroundColor: backgroundColor.startsWith('#') ? backgroundColor : undefined,
 				useCORS: true,
 				allowTaint: true,
-
 				width: width || container.scrollWidth,
 				height: height || container.scrollHeight,
 			});
 
 			const dataUrl = canvas.toDataURL('image/png');
-			const linkElement = window.document.createElement('a');
-			linkElement.href = dataUrl;
-			linkElement.download = fileName;
-			linkElement.click();
-
+			const blob = await new Promise<Blob>((resolve) => {
+				canvas.toBlob((blob) => resolve(blob!), 'image/png');
+			});
 
 			root.unmount();
-		} finally {
-		
+
 			if (container.parentNode) {
 				window.document.body.removeChild(container);
 			}
+
+			return {dataUrl, blob, canvas};
+		} catch (error) {
+			if (container.parentNode) {
+				window.document.body.removeChild(container);
+			}
+			throw error;
 		}
-	}, [document, backgroundColor, fileName, scale]);
+	}, [document, backgroundColor, scale, width, height]);
+
+	const download = useCallback(async () => {
+		const {dataUrl} = await captureImage();
+		const linkElement = window.document.createElement('a');
+		linkElement.href = dataUrl;
+		linkElement.download = fileName;
+		linkElement.click();
+	}, [captureImage, fileName]);
+
+	const share = useCallback(async () => {
+		const {blob} = await captureImage();
+		const file = new File([blob], fileName, {type: 'image/png'});
+
+		if (navigator.share && navigator.canShare && navigator.canShare({files: [file]})) {
+			try {
+				await navigator.share({files: [file]});
+			} catch (error) {
+				await copyToClipboard(blob);
+			}
+		} else {
+			await copyToClipboard(blob);
+		}
+	}, [captureImage, fileName]);
+
+	const copyToClipboard = async (blob: Blob) => {
+		if (navigator.clipboard && window.ClipboardItem) {
+			try {
+				await navigator.clipboard.write([new ClipboardItem({'image/png': blob})]);
+			} catch (error) {
+				console.warn('Failed to copy image to clipboard:', error);
+			}
+		} else {
+			console.warn('Clipboard API not supported');
+		}
+	};
+
+	const actions: Actions = {download, share};
+
+
+	if (typeof children === 'function') {
+		return <>{children(actions)}</>;
+	}
 
 	const enhancedChildren = isValidElement(children)
-		? cloneElement(children as React.ReactElement<any>, {onClick: downloadPNG})
+		? cloneElement(children as React.ReactElement<any>, {onClick: download})
 		: children;
 
 	return <>{enhancedChildren}</>;

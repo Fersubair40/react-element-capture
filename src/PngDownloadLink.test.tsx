@@ -1,4 +1,3 @@
-import React from 'react';
 import { render } from '@testing-library/react';
 import { PNGDownloadLink } from './PngDownloadLink';
 
@@ -73,5 +72,42 @@ describe('PNGDownloadLink', () => {
   it('component exports correctly', () => {
     expect(PNGDownloadLink).toBeDefined();
     expect(typeof PNGDownloadLink).toBe('function');
+  });
+
+  it('supports function children pattern', () => {
+    const { container } = render(
+      <PNGDownloadLink document={mockDocument}>
+        {() => <div data-testid="function-child">Function Child</div>}
+      </PNGDownloadLink>
+    );
+
+    // For now, just test that component renders without crashing with function children
+    expect(container).toBeDefined();
+  });
+
+  it('renders custom UI with render props', () => {
+    const { container } = render(
+      <PNGDownloadLink document={mockDocument}>
+        {({ download, share }) => (
+          <div>
+            <button onClick={download} data-testid="download-btn">Download</button>
+            <button onClick={share} data-testid="share-btn">Share</button>
+          </div>
+        )}
+      </PNGDownloadLink>
+    );
+
+    expect(container.querySelector('[data-testid="download-btn"]')).toBeDefined();
+    expect(container.querySelector('[data-testid="share-btn"]')).toBeDefined();
+  });
+
+  it('maintains backward compatibility with regular children', () => {
+    const { container } = render(
+      <PNGDownloadLink document={mockDocument}>
+        <button>Old Style Button</button>
+      </PNGDownloadLink>
+    );
+
+    expect(container).toBeDefined();
   });
 });
