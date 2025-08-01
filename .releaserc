@@ -9,10 +9,7 @@
     [
       "@semantic-release/npm",
       {
-        "pkgRoot": "dist/",
-        "npmPublish": true,
-        "tarballDir": "dist/",
-        "access": "public"
+        "pkgRoot": "dist/"
       }
     ],
     "@semantic-release/git",
