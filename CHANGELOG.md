@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/Fersubair40/react-element-capture/compare/v1.0.5...v1.0.6) (2025-08-01)
+
+
+### Bug Fixes
+
+* update package.json and TypeScript configurations for ESM and UMD support ([c39d7a9](https://github.com/Fersubair40/react-element-capture/commit/c39d7a945e7ae9b4f7245488620a1ec63f557cff))
+
 ## [1.0.5](https://github.com/Fersubair40/react-element-capture/compare/v1.0.4...v1.0.5) (2025-08-01)
 
 
