@@ -3,6 +3,11 @@
 	"version": "0.0.0-semantic-release",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Fersubair40/png-download-link.git"
+	},
+	"homepage": "https://github.com/Fersubair40/png-download-link.git#readme",
 	"scripts": {
 		"build": "tsc",
 		"prepare": "husky",
