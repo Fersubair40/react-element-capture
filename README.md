@@ -1,11 +1,15 @@
-# PNG Download Link
+# React Element Capture
 
-A React component for downloading HTML elements as PNG images.
+A React component for capturing and downloading HTML elements as PNG images.
 
 ## Installation
 
 ```bash
-npm install png-download-link
+npm install @temilayodev/react-element-capture
+```
+
+```bash
+yarn add @temilayodev/react-element-capture
 ```
 
 ## Usage
@@ -14,7 +18,7 @@ npm install png-download-link
 
 ```jsx
 import React from 'react';
-import { PNGDownloadLink } from 'png-download-link';
+import { PNGDownloadLink } from '@temilayodev/react-element-capture';
 
 function App() {
   const contentToDownload = (
@@ -41,7 +45,7 @@ function App() {
 
 ```jsx
 import React from 'react';
-import { PNGDownloadLink } from 'png-download-link';
+import { PNGDownloadLink } from '@temilayodev/react-element-capture';
 
 function App() {
   const contentToDownload = (
@@ -99,12 +103,18 @@ The share function uses the Web Share API when available (mobile devices, some d
 ```bash
 # Install dependencies
 npm install
+# or
+yarn install
 
 # Build the project
 npm run build
+# or
+yarn build
 
-# Version management (using semantic-release)
-npm run release
+# Run tests
+npm test
+# or
+yarn test
 ```
 
 ## License

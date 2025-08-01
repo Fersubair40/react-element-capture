@@ -1,9 +1,9 @@
 {
 	"name": "@temilayodev/react-element-capture",
 	"version": "0.0.0-semantic-release",
-	"private": false,
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
+	"type": "module",
 	"publishConfig": {
 		"access": "public"
 	},
@@ -51,6 +51,6 @@
 		"react",
 		"html2canvas"
 	],
-	"author": "Temilayo",
+	"author": "Temilayo Subair <temisubair@icloud.com>",
 	"license": "MIT"
 }
