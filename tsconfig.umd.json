@@ -6,6 +6,5 @@
     "outDir": "dist/umd",
     "declaration": true,
     "declarationDir": "dist/umd"
-  },
-  "include": ["src/**/*"]
+  }
 }
