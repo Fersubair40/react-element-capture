@@ -2,37 +2,60 @@ import React, {useCallback, cloneElement, isValidElement} from 'react';
 import html2canvas from 'html2canvas';
 import {createRoot} from 'react-dom/client';
 
+export type ImageFormat = 'png' | 'jpeg' | 'jpg' | 'webp';
+
 interface Actions {
 	download: () => Promise<void>;
 	share: () => Promise<void>;
 }
 
-interface PngDownloadLinkProps {
+interface ImageDownloadLinkProps {
 	children: React.ReactNode | ((actions: Actions) => React.ReactNode);
 	document: React.ReactNode;
 	fileName?: string;
+	quality?: number;
 	scale?: number;
 	backgroundColor?: string;
 	width?: number;
 	height?: number;
 }
 
-export const PNGDownloadLink = ({
+export const ImageDownloadLink = ({
 	children,
 	document,
-	fileName = 'receipt.png',
+	fileName,
+	quality = 0.92,
 	scale = 2,
 	backgroundColor = '#ffffff',
 	width,
 	height,
-}: PngDownloadLinkProps) => {
+}: ImageDownloadLinkProps) => {
+	const getFormatFromExtension = (fileName: string): ImageFormat => {
+		const extension = fileName.split('.').pop()?.toLowerCase();
+		switch (extension) {
+			case 'jpg':
+			case 'jpeg':
+				return 'jpeg';
+			case 'png':
+				return 'png';
+			case 'webp':
+				return 'webp';
+			default:
+				throw new Error(
+					`Unsupported file extension: ${extension}. Supported: .png, .jpg, .jpeg, .webp`
+				);
+		}
+	};
+
+	const finalFileName = fileName || 'image.png';
+	const format = getFormatFromExtension(finalFileName);
+	const mimeType = format === 'jpeg' ? 'image/jpeg' : `image/${format}`;
 	const captureImage = useCallback(async () => {
 		const container = window.document.createElement('div');
 		container.style.position = 'absolute';
 		container.style.left = '-9999px';
 		container.style.top = '-9999px';
 
-		// Set explicit dimensions if provided
 		if (width) {
 			container.style.width = `${width}px`;
 		} else {
@@ -83,9 +106,10 @@ export const PNGDownloadLink = ({
 				height: height || container.scrollHeight,
 			});
 
-			const dataUrl = canvas.toDataURL('image/png');
+			const supportsQuality = format !== 'png';
+			const dataUrl = canvas.toDataURL(mimeType, supportsQuality ? quality : undefined);
 			const blob = await new Promise<Blob>((resolve) => {
-				canvas.toBlob((blob) => resolve(blob!), 'image/png');
+				canvas.toBlob((blob) => resolve(blob!), mimeType, supportsQuality ? quality : undefined);
 			});
 
 			root.unmount();
@@ -101,45 +125,44 @@ export const PNGDownloadLink = ({
 			}
 			throw error;
 		}
-	}, [document, backgroundColor, scale, width, height]);
+	}, [document, backgroundColor, scale, width, height, mimeType, format, quality]);
 
 	const download = useCallback(async () => {
 		const {dataUrl} = await captureImage();
 		const linkElement = window.document.createElement('a');
 		linkElement.href = dataUrl;
-		linkElement.download = fileName;
+		linkElement.download = finalFileName;
 		linkElement.click();
-	}, [captureImage, fileName]);
+	}, [captureImage, finalFileName]);
 
 	const share = useCallback(async () => {
 		const {blob} = await captureImage();
-		const file = new File([blob], fileName, {type: 'image/png'});
+		const file = new File([blob], finalFileName, {type: mimeType});
 
 		if (navigator.share && navigator.canShare && navigator.canShare({files: [file]})) {
 			try {
-				await navigator.share({files: [file]});
+				await navigator.share({
+					files: [file],
+				});
 			} catch (error) {
+				console.error('[ImageDownloadLink] Share failed:', error);
 				await copyToClipboard(blob);
 			}
 		} else {
 			await copyToClipboard(blob);
 		}
-	}, [captureImage, fileName]);
+	}, [captureImage, finalFileName, mimeType]);
 
 	const copyToClipboard = async (blob: Blob) => {
 		if (navigator.clipboard && window.ClipboardItem) {
 			try {
-				await navigator.clipboard.write([new ClipboardItem({'image/png': blob})]);
-			} catch (error) {
-				console.warn('Failed to copy image to clipboard:', error);
-			}
+				await navigator.clipboard.write([new ClipboardItem({[mimeType]: blob})]);
+			} catch (error) {}
 		} else {
-			console.warn('Clipboard API not supported');
 		}
 	};
 
 	const actions: Actions = {download, share};
-
 
 	if (typeof children === 'function') {
 		return <>{children(actions)}</>;
@@ -152,4 +175,5 @@ export const PNGDownloadLink = ({
 	return <>{enhancedChildren}</>;
 };
 
-export default PNGDownloadLink;
+export const PNGDownloadLink = ImageDownloadLink;
+export default ImageDownloadLink;
