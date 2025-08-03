@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/Fersubair40/react-element-capture/compare/v1.0.6...v1.1.0) (2025-08-03)
+
+
+### Features
+
+* enhance image download component to support multiple formats (PNG, JPEG, WebP) and update documentation ([0b1ea1f](https://github.com/Fersubair40/react-element-capture/commit/0b1ea1f2d2a606a092590cf32ff9b5eaae87d0c5))
+
 ## [1.0.6](https://github.com/Fersubair40/react-element-capture/compare/v1.0.5...v1.0.6) (2025-08-01)
 
 
